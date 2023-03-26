@@ -97,12 +97,9 @@ func ensureInfoDict(ctx *model.Context) error {
 
 	now := types.DateString(time.Now())
 
-	v := "pdfcpu " + model.VersionStr
-
 	if ctx.Info == nil {
 
 		d := types.NewDict()
-		d.InsertString("Producer", v)
 		d.InsertString("CreationDate", now)
 		d.InsertString("ModDate", now)
 
@@ -127,7 +124,6 @@ func ensureInfoDict(ctx *model.Context) error {
 
 	d.Update("CreationDate", types.StringLiteral(now))
 	d.Update("ModDate", types.StringLiteral(now))
-	d.Update("Producer", types.StringLiteral(v))
 
 	return nil
 }
